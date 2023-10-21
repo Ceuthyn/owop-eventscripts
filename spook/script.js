@@ -4,7 +4,7 @@ OWOP.util.toggleevent = () =>{
 	localStorage.setItem("evtoggle", eventoggle);
 	alert(`triggered button, toggle state ${toggle}`);
 }
-
+/*
 class evghost{
 	constructor(type = Math.floor(Math.random()*2), size = 20, size_u = "px", x = 0, y = 0){
 		this.type = type;
@@ -18,4 +18,4 @@ class evghost{
 		
 	}
 
-}
+}*/
