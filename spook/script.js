@@ -1,5 +1,5 @@
 let eventoggle = localStorage.getItem("evtoggle");
-let toggleeventthingy => ()=>{
+function toggleeventthingy(){
 	eventoggle = localStorage.getItem("evtoggle") == 1 ? 0 : 1;
 	localStorage.setItem("evtoggle", eventoggle);
 	alert(`triggered button, toggle state ${toggle}`);
