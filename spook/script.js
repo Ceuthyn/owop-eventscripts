@@ -1,5 +1,5 @@
-let eventoggle = localStorage.getItem("evtoggle");
-function toggleevent(){
+OWOP.options.eventoggle = localStorage.getItem("evtoggle");
+OWOP.util.toggleevent = () =>{
 	eventoggle = localStorage.getItem("evtoggle") == 1 ? 0 : 1;
 	localStorage.setItem("evtoggle", eventoggle);
 	alert(`triggered button, toggle state ${toggle}`);
