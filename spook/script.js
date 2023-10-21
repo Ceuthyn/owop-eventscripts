@@ -1,5 +1,8 @@
-let toggle => ()=>{
-	let toggle = localStorage.getItem("evtoggle") == 1 ? 0 : 1;
+let eventoggle = localStorage.getItem("evtoggle");
+let toggleeventhingy => ()=>{
+	eventoggle = localStorage.getItem("evtoggle") == 1 ? 0 : 1;
+	localStorage.setItem("evtoggle", eventoggle);
+	alert(`triggered button, toggle state ${toggle}`);
 }
 
 class evghost{
