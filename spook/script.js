@@ -1,7 +1,7 @@
 OWOP.options.eventoggle = localStorage.getItem("evtoggle");
 OWOP.util.toggleevent = () =>{
-	eventoggle = localStorage.getItem("evtoggle") == 1 ? 0 : 1;
-	localStorage.setItem("evtoggle", eventoggle);
+	OWOP.options.eventoggle = localStorage.getItem("evtoggle") == 1 ? 0 : 1;
+	localStorage.setItem("evtoggle", OWOP.options.eventoggle);
 	alert(`triggered button, toggle state ${toggle}`);
 }
 /*
@@ -14,7 +14,7 @@ class evghost{
 		this.y = y;
 	}
 
-	this.update(){
+	update(){
 		
 	}
 
