@@ -1,4 +1,3 @@
-setTimeout(()=>{
 OWOP.options.eventoggle = localStorage.getItem("evtoggle");
 OWOP.util.toggleevent = () =>{
 	eventoggle = localStorage.getItem("evtoggle") == 1 ? 0 : 1;
@@ -20,4 +19,3 @@ class evghost{
 	}
 
 }
-},200)
