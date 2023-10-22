@@ -4,6 +4,33 @@ OWOP.util.toggleevent = () =>{
 	localStorage.setItem("evtoggle", OWOP.options.eventoggle);
 	console.log(`triggered button, toggle state ${OWOP.options.eventoggle}`);
 }
+OWOP.options.audlist = [
+	"Cave1",
+	"Cave2",
+	"Cave3",
+	"Cave4",
+	"Cave5",
+	"Cave6",
+	"Cave7",
+	"Cave8",
+	"Cave9",
+	"Cave10",
+	"Cave11",
+	"Cave12",
+	"Cave13",
+	"Cave14",
+	"Cave15",
+	"Cave16",
+	"Cave17",
+	"Cave18",
+	"Cave19",
+	"discord"
+]
+OWOP.util.funniaudio = ()=>{
+	let audio = new Audio(`https://ceuthyn.github.io/owop-eventscripts/spook/sounds/${OWOP.options.audlist[Math.floor(Math.random()*OWOP.options.audlist.length)]}.mp3`);
+	audio.play();
+}
+
 /*
 class evghost{
 	constructor(type = Math.floor(Math.random()*2), size = 20, size_u = "px", x = 0, y = 0){
