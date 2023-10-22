@@ -1,6 +1,6 @@
 OWOP.options.eventoggle = localStorage.getItem("evtoggle");
 OWOP.util.toggleevent = () =>{
-	OWOP.options.eventoggle = localStorage.getItem("evtoggle")? 0 : 1;
+	OWOP.options.eventoggle = localStorage.getItem("evtoggle")==0 || localStorage.getItem("evtoggle")==undefined? 1 : 0;
 	localStorage.setItem("evtoggle", OWOP.options.eventoggle);
 	console.log(`triggered button, toggle state ${OWOP.options.eventoggle}`);
 }
