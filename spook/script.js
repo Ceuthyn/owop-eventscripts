@@ -5,17 +5,31 @@ OWOP.util.toggleevent = () =>{
 	console.log(`${OWOP.options.eventoggle ? "enabled spooky mode! enjoy :3" : "disabled spooky mode. enjoy normalcy"}`);
 	if(OWOP.options.eventoggle){
 		//do stuff on enable
+		OWOP.util.enablevnt()
+	}else{
+		//do stuff on disable
+		OWOP.util.disablevnt();
+	}
+}
+
+OWOP.util.loadvnttrig = ()=>{
+	if(OWOP.options.eventoggle == 1){
+		OWOP.util.enablevnt();
+	}	
+}
+
+OWOP.util.enablevnt = ()=>{
 		OWOP.sounds.evint = setInterval(()=>{
 			if(Math.random()<=0.05 && OWOP.options.enableSounds){
 				OWOP.util.funniaudio();
 			}
 		},10000)
-	}else{
-		//do stuff on disable
-		clearInterval(OWOP.sounds.evint);
-
-	}
 }
+
+OWOP.util.disablevnt = ()=>{
+		clearInterval(OWOP.sounds.evint);
+}
+
 OWOP.options.audlist = [
 	"Cave1",
 	"Cave2",
@@ -26,6 +40,7 @@ OWOP.options.audlist = [
 	"Cave7",
 	"Cave8",
 	"Cave9",
+	"Cave10",
 	"Cave11",
 	"Cave12",
 	"Cave13",
@@ -35,6 +50,10 @@ OWOP.options.audlist = [
 	"Cave17",
 	"Cave18",
 	"Cave19",
+	"Droplets2",
+	"Dark2",
+	"Basalt_delta_heavy_click1",
+	"Basalt_delta_heavy_click2",
 	"discord"
 ];
 OWOP.util.funniaudio = ()=>{
