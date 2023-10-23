@@ -78,7 +78,7 @@ class evghost{
 	
 	draw(){
 		document.body.insertAdjacentHTML('beforeEnd', this.html);
-		this.ele = document.body.querySelector(`#${this.id}`) 
+		this.ele = document.body.getElementById(`${this.id}`) 
 	}
 
 	update(){
