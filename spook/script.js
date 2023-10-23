@@ -64,11 +64,13 @@ OWOP.util.funniaudio = ()=>{
 
 
 class evghost{
-	constructor(type = Math.ceil(Math.random()*2.1), size = "10%", x = 0, y = 0, tx = 0, ty = 0, flip = 0, id = "shutup"+Date.now()){
+	constructor(type = Math.ceil(Math.random()*2.1), size = "10%", x = 0, y = 0, tx = 0, ty = 0, flip = 0){
 		this.type = type;
 		this.size = size;
 		this.x = x;
 		this.y = y;
+		this.tx = tx;
+		this.ty = ty;
 		this.op = 0;
 		this.id = id;
 		this.ele;
@@ -92,9 +94,19 @@ class evghost{
 		this.ele = document.getElementById(`${this.id}`) 
 	}
 
+	dst(x1,y1,x2,y2){
+		x1 -= x2;
+		y1 -= y2;
+		return Math.sqrt(x1**2 + y1**2);
+	}
+
+	lerp(a,b,t){return t*(a-b)+b}
+	
 	update(){
 		let el = this.ele; //i have no fucking idea why this is done, the thing im looking at just does it
-		el.style.setProperty('left',window.innerWidth*Math.random()+'px');
-		el.style.setProperty('top',window.innerHeight*Math.random()+'px');
+		el.style.setProperty('left',this.lerp(this.x,this.ty)+'px');
+		el.style.setProperty('top',this.lerp(this.y,this.ty)+'px');
+		el.style.setProperty('opacity',Math.min(dst(this.x, this.y, this.tx, this.ty)/100, 1))
+		this.op += 0.01;
 	}
 }
