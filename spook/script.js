@@ -70,10 +70,10 @@ class evghost{
 		this.y = y;
 		this.tx = tx;
 		this.ty = ty;
-		this.op = 0;
+		this.p = 0;
 		this.id = "fuckyou"+Date.now();
 		this.ele;
-		this.html = `<img src="https://ceuthyn.github.io/owop-eventscripts/spook/img/ghost${this.type}.png" class="ghort" id="${this.id}" style="left: ${this.x}; top: ${this.y}; opacity: ${this.op};">`;
+		this.html = `<img src="https://ceuthyn.github.io/owop-eventscripts/spook/img/ghost${this.type}.png" class="ghort" id="${this.id}" style="left: ${this.x}; top: ${this.y}; opacity: 1;">`;
 		this.css = `<style id="ghostcsscrap">
 				.ghort{
 					--size: 5%;
@@ -103,9 +103,9 @@ class evghost{
 	
 	update(){
 		let el = this.ele; //i have no fucking idea why this is done, the thing im looking at just does it
-		el.style.left = this.lerp(this.x,this.ty)+'px';
-		el.style.top = this.lerp(this.y,this.ty)+'px';
+		el.style.left = this.lerp(this.x,this.ty,this.p)+'px';
+		el.style.top = this.lerp(this.y,this.ty,this.p)+'px';
 		el.style.opacity = Math.min(this.dst(this.x, this.y, this.tx, this.ty)/100, 1)
-		this.op += 0.01;
+		this.p += 0.01;
 	}
 }
