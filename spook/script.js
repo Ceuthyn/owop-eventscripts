@@ -106,7 +106,7 @@ class evghost{
 		let el = this.ele; //i have no fucking idea why this is done, the thing im looking at just does it
 		el.style.setProperty('left',this.lerp(this.x,this.ty)+'px');
 		el.style.setProperty('top',this.lerp(this.y,this.ty)+'px');
-		el.style.setProperty('opacity',Math.min(dst(this.x, this.y, this.tx, this.ty)/100, 1))
+		el.style.setProperty('opacity',Math.min(this.dst(this.x, this.y, this.tx, this.ty)/100, 1))
 		this.op += 0.01;
 	}
 }
