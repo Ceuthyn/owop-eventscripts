@@ -64,9 +64,8 @@ OWOP.util.funniaudio = ()=>{
 
 
 class evghost{
-	constructor(type = Math.ceil(Math.random()*2.1), size = "10%", x = 0, y = 0, tx = 0, ty = 0, flip = 0){
+	constructor(type = Math.ceil(Math.random()*2.1), x = 0, y = 0, tx = 0, ty = 0, flip = 0){
 		this.type = type;
-		this.size = size;
 		this.x = x;
 		this.y = y;
 		this.tx = tx;
@@ -77,7 +76,7 @@ class evghost{
 		this.html = `<img src="https://ceuthyn.github.io/owop-eventscripts/spook/img/ghost${this.type}.png" class="ghort" id="${this.id}" style="width=${this.size};">`;
 		this.css = `<style id="ghostcsscrap">
 				.ghort{
-					--size: 10%;
+					--size: 5%;
 					width: var(--size);
 					position: absolute;
 					z-index: 10;
@@ -104,9 +103,9 @@ class evghost{
 	
 	update(){
 		let el = this.ele; //i have no fucking idea why this is done, the thing im looking at just does it
-		el.style.setProperty('left',this.lerp(this.x,this.ty)+'px');
-		el.style.setProperty('top',this.lerp(this.y,this.ty)+'px');
-		el.style.setProperty('opacity',Math.min(this.dst(this.x, this.y, this.tx, this.ty)/100, 1))
+		el.style.left = this.lerp(this.x,this.ty)+'px';
+		el.style.top = this.lerp(this.y,this.ty)+'px';
+		el.style.opacity = Math.min(this.dst(this.x, this.y, this.tx, this.ty)/100, 1)
 		this.op += 0.01;
 	}
 }
