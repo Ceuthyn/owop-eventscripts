@@ -73,7 +73,7 @@ class evghost{
 		this.id = id;
 		this.ele;
 		this.html = `<img src="https://ceuthyn.github.io/owop-evenscripts/spook/img/ghost${this.type}" id="${this.id}style="--size: ${this.size}; position = "absolute"; left=${this.x}; top="${this.y}; image-rendering: pixelated;"`;
-		draw();
+		this.draw();
 	}
 	
 	draw(){
