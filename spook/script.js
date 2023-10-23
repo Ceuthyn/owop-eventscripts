@@ -76,8 +76,7 @@ class evghost{
 		this.html = `<img src="https://ceuthyn.github.io/owop-eventscripts/spook/img/ghost${this.type}.png" class="ghort" id="${this.id}" style="left: ${this.x}; top: ${this.y}; opacity: 1;">`;
 		this.css = `<style id="ghostcsscrap">
 				.ghort{
-					--size: 5%;
-					width: var(--size);
+					width: 5%;
 					position: absolute;
 					z-index: 10;
 					image-rendering: pixelated;
