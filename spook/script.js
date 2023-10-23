@@ -52,8 +52,8 @@ OWOP.options.audlist = [
 	"Cave19",
 	"Driplets2",
 	"Dark4",
-	"Basalt_delta_heavy_click1",
-	"Basalt_delta_heavy_click2",
+	"Basalt_deltas_heavy_click1",
+	"Basalt_deltas_heavy_click2",
 	"discord"
 ];
 OWOP.util.funniaudio = ()=>{
