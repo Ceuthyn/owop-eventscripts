@@ -72,7 +72,7 @@ class evghost{
 		this.tx = tx;
 		this.ty = ty;
 		this.op = 0;
-		this.id = id;
+		this.id = "fuckyou"+Date.now();
 		this.ele;
 		this.html = `<img src="https://ceuthyn.github.io/owop-eventscripts/spook/img/ghost${this.type}.png" class="ghort" id="${this.id}" style="width=${this.size};">`;
 		this.css = `<style id="ghostcsscrap">
