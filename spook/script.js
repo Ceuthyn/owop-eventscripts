@@ -72,7 +72,7 @@ class evghost{
 		this.op = 0;
 		this.id = id;
 		this.ele;
-		this.html = `<img src="https://ceuthyn.github.io/owop-eventscripts/spook/img/ghost${this.type}.png" id="${this.id}style="--size: ${this.size}; position = "absolute"; left=${this.x}; top="${this.y}; image-rendering: pixelated;">`;
+		this.html = `<img src="https://ceuthyn.github.io/owop-eventscripts/spook/img/ghost${this.type}.png" id="${this.id}"; style="--size: ${this.size}; position = "absolute"; left=${this.x}; top="${this.y}; image-rendering: pixelated;">`;
 		this.draw();
 	}
 	
