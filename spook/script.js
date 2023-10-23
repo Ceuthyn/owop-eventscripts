@@ -83,6 +83,6 @@ class evghost{
 
 	update(){
 		this.ele.style.left = `${window.innerWidth* Math.random()}px`;
-		this.ele.style.top = `${window.innerHeight*Math.radom()}px`;
+		this.ele.style.top = `${window.innerHeight*Math.random()}px`;
 	}
 }
