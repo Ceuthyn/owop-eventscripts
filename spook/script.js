@@ -24,6 +24,7 @@ OWOP.util.enablevnt = ()=>{
 				OWOP.util.funniaudio();
 			}
 		},10000)
+		OWOP.util.ghostshit = evghost;
 }
 
 OWOP.util.disablevnt = ()=>{
@@ -61,18 +62,27 @@ OWOP.util.funniaudio = ()=>{
 	audio.play();
 }
 
-/*
+
 class evghost{
-	constructor(type = Math.floor(Math.random()*2), size = 20, size_u = "px", x = 0, y = 0){
+	constructor(type = Math.ceil(Math.random()*2), size = "10%", x = 0, y = 0, tx = 0, ty = 0, flip = 0, id = Date.now()){
 		this.type = type;
 		this.size = size;
-		this.size_u = size_u;
 		this.x = x;
 		this.y = y;
+		this.op = 0;
+		this.id = id;
+		this.ele;
+		this.html = `<img src="https://ceuthyn.github.io/owop-evenscripts/spook/img/ghost${this.type}" id="${this.id}style="--size: ${this.size}; position = "absolute"; left=${this.x}; top="${this.y}; image-rendering: pixelated;"`;
+		draw();
+	}
+	
+	draw(){
+		document.body.insertAdjacentHTML('beforeEnd', this.html);
+		this.ele = document.body.querySelector(`#${this.id}`) 
 	}
 
 	update(){
-		
+		this.ele.style.left = `${window.innerWidth* Math.random()}px`;
+		this.ele.style.top = `${window.innerHeight*Math.radom()}px`;
 	}
-
-}*/
+}
