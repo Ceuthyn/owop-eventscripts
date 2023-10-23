@@ -72,7 +72,7 @@ class evghost{
 		this.op = 0;
 		this.id = id;
 		this.ele;
-		this.html = `<img src="https://ceuthyn.github.io/owop-eventscripts/spook/img/ghost${this.type}.png" id="${this.id}" style="width=${this.size}; position='absolute'; left=${this.x}px; top=${this.y}px; image-rendering:'pixelated';">`;
+		this.html = `<img src="https://ceuthyn.github.io/owop-eventscripts/spook/img/ghost${this.type}.png" id="${this.id}" style="width=${this.size}; position='absolute'; image-rendering:'pixelated';">`;
 		this.draw();
 	}
 	
@@ -82,7 +82,7 @@ class evghost{
 	}
 
 	update(){
-		this.ele.style.left = (window.innerWidth*Math.random())+"px";
-		this.ele.style.top = (window.innerHeight*Math.random())+"px";
+		this.ele.style.setProperty('--offsetX',window.innerWidth*Math.random()+"px");
+		this.ele.style.setProperty('--offsetY',window.innerHeight*Math.random()+"px");
 	}
 }
