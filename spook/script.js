@@ -50,7 +50,7 @@ OWOP.options.audlist = [
 	"Cave17",
 	"Cave18",
 	"Cave19",
-	"Droplets2",
+	"Driplets2",
 	"Dark2",
 	"Basalt_delta_heavy_click1",
 	"Basalt_delta_heavy_click2",
