@@ -75,15 +75,15 @@ class evghost{
 		this.html = `<img src="https://ceuthyn.github.io/owop-eventscripts/spook/img/ghost${this.type}.png" class="ghort" id="${this.id}" style="width=${this.size};">`;
 		this.css = `<style>
 				.ghort{
-					--size = 10%;
-					--offsetX = 500;
-					--offsetY = 10;
-					--xw = -1;
-					width = var(--size);
+					--size: 10%;
+					--offsetX: 500;
+					--offsetY: 10;
+					--xw: -1;
+					width: var(--size);
 					position: absolute;
 					transform-origin: center;
 					z-index: 10;
-					image-rendering: 'pixelated';
+					image-rendering: pixelated;
 					transform: translate(-50%, -50%) translate(calc(var(--offsetX) * 1px), calc(var(--offsetY) * 1px)) transform(scaleX(var(--xw)));	
 		}
 		</style>`;
@@ -93,7 +93,7 @@ class evghost{
 	
 	draw(){
 		document.body.insertAdjacentHTML('beforeEnd', this.html);
-		if(!document.getElementById("ghostcsscrap")){document.body.insertAdjacentHTML('beforeEnd', this.css)};
+		if(!document.getElementById("ghostcsscrap") == undefined){document.body.insertAdjacentHTML('beforeEnd', this.css)};
 		this.ele = document.getElementById(`${this.id}`) 
 	}
 
