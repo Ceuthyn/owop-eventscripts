@@ -76,9 +76,9 @@ class evghost{
 		this.css = `<style>
 				.ghort{
 					--size = 10%;
-					--offsetX = 0;
-					--offsetY = 0;
-					--xw = 1;
+					--offsetX = 500;
+					--offsetY = 10;
+					--xw = -1;
 					width = var(--size);
 					position: absolute;
 					transform-origin: center;
