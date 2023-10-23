@@ -73,18 +73,13 @@ class evghost{
 		this.id = id;
 		this.ele;
 		this.html = `<img src="https://ceuthyn.github.io/owop-eventscripts/spook/img/ghost${this.type}.png" class="ghort" id="${this.id}" style="width=${this.size};">`;
-		this.css = `<style>
+		this.css = `<style id="ghostcsscrap">
 				.ghort{
 					--size: 10%;
-					--offsetX: 500;
-					--offsetY: 10;
-					--xw: -1;
 					width: var(--size);
 					position: absolute;
-					transform-origin: center;
 					z-index: 10;
 					image-rendering: pixelated;
-					transform: translate(-50%, -50%) translate(calc(var(--offsetX) * 1px), calc(var(--offsetY) * 1px)) transform(scaleX(var(--xw)));	
 		}
 		</style>`;
 		this.draw();
@@ -99,7 +94,7 @@ class evghost{
 
 	update(){
 		let el = this.ele; //i have no fucking idea why this is done, the thing im looking at just does it
-		el.style.setProperty('--offsetX',window.innerWidth*Math.random());
-		el.style.setProperty('--offsetY',window.innerHeight*Math.random());
+		el.style.setProperty('left',window.innerWidth*Math.random()+'px');
+		el.style.setProperty('top',window.innerHeight*Math.random()+'px');
 	}
 }
