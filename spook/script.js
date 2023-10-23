@@ -99,7 +99,7 @@ class evghost{
 
 	update(){
 		let el = this.ele; //i have no fucking idea why this is done, the thing im looking at just does it
-		el.style.setProperty('--offsetX',window.innerWidth*Math.random()+"px");
-		el.style.setProperty('--offsetY',window.innerHeight*Math.random()+"px");
+		el.style.setProperty('--offsetX',window.innerWidth*Math.random());
+		el.style.setProperty('--offsetY',window.innerHeight*Math.random());
 	}
 }
