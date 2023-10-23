@@ -93,7 +93,7 @@ class evghost{
 	
 	draw(){
 		document.body.insertAdjacentHTML('beforeEnd', this.html);
-		if(!document.getElementById("ghostcsscrap") == undefined){document.body.insertAdjacentHTML('beforeEnd', this.css)};
+		if(!document.getElementById("ghostcsscrap") == null){document.body.insertAdjacentHTML('beforeEnd', this.css)};
 		this.ele = document.getElementById(`${this.id}`) 
 	}
 
