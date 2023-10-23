@@ -72,7 +72,7 @@ class evghost{
 		this.op = 0;
 		this.id = id;
 		this.ele;
-		this.html = `<img src="https://ceuthyn.github.io/owop-eventscripts/spook/img/ghost${this.type}.png" class="ghort" id="${this.id}" style="width=${this.size}; position='absolute'; image-rendering:'pixelated';">`;
+		this.html = `<img src="https://ceuthyn.github.io/owop-eventscripts/spook/img/ghost${this.type}.png" class="ghort" id="${this.id}" style="width=${this.size};">`;
 		this.css = `<style id="ghostcsscrap">
 				.ghort{
 					--size = 10%;
@@ -83,6 +83,7 @@ class evghost{
 					position: absolute;
 					transform-origin: center;
 					z-index: 10;
+					image-rendering: 'pixelated';
 					transform: translate(-50%, -50%) translate(calc(var(--offsetX) * 1px), calc(var(--offsetY) * 1px)) transform(scaleX(var(--xw)));	
 		}
 		</style>`;
@@ -91,8 +92,8 @@ class evghost{
 	}
 	
 	draw(){
-		if(!document.getElementById("ghostcsscrap")){document.body.insertAdjacentHTML('beforeEnd', this.css)};
 		document.body.insertAdjacentHTML('beforeEnd', this.html);
+		if(!document.getElementById("ghostcsscrap")){document.body.insertAdjacentHTML('beforeEnd', this.css)};
 		this.ele = document.getElementById(`${this.id}`) 
 	}
 
