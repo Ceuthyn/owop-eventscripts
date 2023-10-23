@@ -64,7 +64,7 @@ OWOP.util.funniaudio = ()=>{
 
 
 class evghost{
-	constructor(type = Math.ceil(Math.random()*2), size = "10%", x = 0, y = 0, tx = 0, ty = 0, flip = 0, id = "shutup"+Date.now()){
+	constructor(type = Math.ceil(Math.random()*2.1), size = "10%", x = 0, y = 0, tx = 0, ty = 0, flip = 0, id = "shutup"+Date.now()){
 		this.type = type;
 		this.size = size;
 		this.x = x;
@@ -72,7 +72,7 @@ class evghost{
 		this.op = 0;
 		this.id = id;
 		this.ele;
-		this.html = `<img src="https://ceuthyn.github.io/owop-eventscripts/spook/img/ghost${this.type}.png" id="${this.id}"; style="--size: ${this.size}; position = "absolute"; left=${this.x}; top="${this.y}; image-rendering: pixelated;">`;
+		this.html = `<img src="https://ceuthyn.github.io/owop-eventscripts/spook/img/ghost${this.type}.png" id="${this.id}" style="--size: ${this.size} position = "absolute" left=${this.x} top="${this.y} image-rendering: pixelated">`;
 		this.draw();
 	}
 	
