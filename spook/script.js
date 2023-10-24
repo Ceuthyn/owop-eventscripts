@@ -89,7 +89,7 @@ OWOP.util.funniaudio = ()=>{
 
 
 class evghost{
-	constructor(type = Math.ceil(Math.random()*2.1), x = 0, y = 0, tx = 0, ty = 0, doe = 0){
+	constructor(type = Math.ceil(Math.random()*2.05), x = 0, y = 0, tx = 0, ty = 0, doe = 0){
 		this.type = type;
 		this.ix = x;
 		this.iy = y;
