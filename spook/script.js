@@ -2,7 +2,7 @@ OWOP.options.eventoggle = localStorage.getItem("evtoggle");
 OWOP.util.toggleevent = () =>{
 	OWOP.options.eventoggle = localStorage.getItem("evtoggle")==0 || localStorage.getItem("evtoggle")==undefined? 1 : 0;
 	localStorage.setItem("evtoggle", OWOP.options.eventoggle);
-	console.log(`${OWOP.options.eventoggle ? "enabled spooky mode! enjoy :3" : "disabled spooky mode. enjoy normalcy"}`);
+	OWOP.chat.local(`${OWOP.options.eventoggle ? "enabled spooky mode! enjoy :3" : "disabled spooky mode. enjoy normalcy"}`);
 	if(OWOP.options.eventoggle){
 		//do stuff on enable
 		OWOP.util.enablevnt()
@@ -14,6 +14,7 @@ OWOP.util.toggleevent = () =>{
 
 OWOP.util.loadvnttrig = ()=>{
 	if(OWOP.options.eventoggle == 1){
+		OWOP.chat.local("spooky mode active");
 		OWOP.util.enablevnt();
 	}	
 }
