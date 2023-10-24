@@ -37,7 +37,7 @@ OWOP.util.enablevnt = ()=>{
 				for(let i = 0; i<am; i++){
 					setTimeout(()=>{
 						OWOP.elements.ghosts.push(new OWOP.util.ghostshit(undefined, Math.random()*window.innerWidth, Math.random()*window.innerHeight, Math.random()*window.innerWidth, Math.random()*window.innerHeight, 1))},
-					100*(Math.random()*10));
+					1000*(Math.random()*10));
 				}
 			}		
 		},5000)
