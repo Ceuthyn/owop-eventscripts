@@ -34,12 +34,12 @@ OWOP.util.enablevnt = ()=>{
 			}
 		},50)
 		OWOP.util.ghcrint = setInterval(()=>{
-			if(Math.random()<0.1){
+			if(Math.random()<0.2){
 				let am = Math.ceil(Math.random()*7);
 				for(let i = 0; i<am; i++){
 					setTimeout(()=>{
 						OWOP.elements.ghosts.push(new OWOP.util.ghostshit(undefined, Math.random()*window.innerWidth, Math.random()*window.innerHeight, Math.random()*window.innerWidth, Math.random()*window.innerHeight, 1))},
-					1000*(Math.random()*100));
+					Math.random()*10000);
 				}
 			}		
 		},5000)
