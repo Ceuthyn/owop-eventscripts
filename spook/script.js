@@ -94,8 +94,8 @@ class evghost{
         	let xFloor = Math.floor(scaledX);
         	let t = scaledX - xFloor;
         	let tRemapSmoothstep = t * t * ( 3 - 2 * t );
-        	let xMin = xFloor &#038; 256;
-        	let xMax = ( xMin + 1 ) &#038; 255;
+        	let xMin = xFloor & 0xFF; 256;
+        	let xMax = ( xMin + 1 ) & 0xFF; 255;
         	let y = lerp( r[ xMin ], r[ xMax ], tRemapSmoothstep );
         	return y * 20;
     	};
