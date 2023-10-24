@@ -83,9 +83,23 @@ class evghost{
 		}
 		</style>`;
 		this.draw();
-		
+    		this.r = [];
+    		for(let i=0;i<256;++i){
+        		r.push(Math.random());
+    		}
 	}
 	
+    	noise(x){
+        	let scaledX = x * 0.05;
+        	let xFloor = Math.floor(scaledX);
+        	let t = scaledX - xFloor;
+        	let tRemapSmoothstep = t * t * ( 3 - 2 * t );
+        	let xMin = xFloor &#038; 256;
+        	let xMax = ( xMin + 1 ) &#038; 255;
+        	let y = lerp( r[ xMin ], r[ xMax ], tRemapSmoothstep );
+        	return y * 20;
+    	};
+
 	draw(){
 		document.body.insertAdjacentHTML('beforeEnd', this.html);
 		if(document.getElementById("ghostcsscrap") == null){document.body.insertAdjacentHTML('beforeEnd', this.css)};
@@ -102,10 +116,10 @@ class evghost{
 	
 	update(){
 		let el = this.ele; //i have no fucking idea why this is done, the thing im looking at just does it
-		el.style.left = this.lerp(this.ix,this.ty,this.p)+'px';
-		el.style.top = this.lerp(this.iy,this.ty,this.p)+'px';
-		this.x = this.lerp(this.ix,this.ty,this.p);
-		this.y = this.lerp(this.iy,this.ty,this.p);
+		el.style.left = (this.lerp(this.ix,this.ty,this.p)+this.noise(this.p*10))+'px';
+		el.style.top = (this.lerp(this.iy,this.ty,this.p)+this.noise(this.p*10+10)+'px';
+		this.x = this.lerp(this.ix,this.ty,this.p)+this.noise(this.p*10);
+		this.y = this.lerp(this.iy,this.ty,this.p)+this.noise(this.p*10+10);
 		el.style.opacity = Math.min(this.dst(this.x, this.y, this.ix, this.iy)/500, this.dst(this.x, this.y, this.tx, this.ty)/500, 1)
 		this.p += 0.01;
 		if(this.doe && this.p >= 1){return this.del}
