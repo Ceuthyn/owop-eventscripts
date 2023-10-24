@@ -33,7 +33,7 @@ OWOP.util.enablevnt = ()=>{
 		},50)
 		OWOP.util.ghcrint = setInterval(()=>{
 			if(Math.random()<0.1){
-				let am = Math.ceil(Math.random()*3);
+				let am = Math.ceil(Math.random()*5);
 				for(let i = 0; i<am; i++){
 					setTimeout(()=>{
 						OWOP.elements.ghosts.push(new OWOP.util.ghostshit(undefined, Math.random()*window.innerWidth, Math.random()*window.innerHeight, Math.random()*window.innerWidth, Math.random()*window.innerHeight, 1))},
@@ -119,8 +119,7 @@ class evghost{
         	let xMin = xFloor & 0xFF; 256;
         	let xMax = (xMin + 1) & 0xFF; 255;
         	let y = this.lerp(this.r[xMin], this.r[xMax], tRemapSmoothstep);
-        	console.log(y);
-		return y * 75;
+		return (y-0.5) * 75;
     	};
 
 	draw(){
