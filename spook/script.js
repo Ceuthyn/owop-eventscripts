@@ -118,11 +118,12 @@ class evghost{
 	update(){
 		let el = this.ele; //i have no fucking idea why this is done, the thing im looking at just does it
 		el.style.left = (this.lerp(this.ix,this.ty,this.p)+this.noise(this.p*100))+'px';
-		el.style.top = (this.lerp(this.iy,this.ty,this.p)+this.noise(this.p*100+10))+'px';
+		el.style.top = (this.lerp(this.iy,this.ty,this.p)+this.noise(this.p*100+100))+'px';
 		this.x = this.lerp(this.ix,this.ty,this.p)+this.noise(this.p*100);
-		this.y = this.lerp(this.iy,this.ty,this.p)+this.noise(this.p*100+10);
+		this.y = this.lerp(this.iy,this.ty,this.p)+this.noise(this.p*100+100);
 		el.style.opacity = Math.min(this.dst(this.x, this.y, this.ix, this.iy)/500, this.dst(this.x, this.y, this.tx, this.ty)/500, 1)
 		this.p += 0.01;
+		console.log(this.p)
 		if(this.doe && this.p >= 1){return this.del()}
 	}
 
