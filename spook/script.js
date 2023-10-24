@@ -11,7 +11,7 @@ OWOP.util.toggleevent = () =>{
 		OWOP.util.disablevnt();
 	}
 }
-
+OWOP.options.loadedvnt = 0;
 OWOP.util.loadvnttrig = ()=>{
 	if(OWOP.options.eventoggle == 1){
 		console.log("thanks to leg3nd for ghost sprite!");
@@ -26,7 +26,7 @@ OWOP.util.enablevnt = ()=>{
 				OWOP.util.funniaudio();
 			}
 		},10000)
-		OWOP.util.ghostshit = evghost;
+		if(!OWOP.options.loadvnt) OWOP.util.ghostshit = evghost;
 		OWOP.elements.ghosts = [];
 		OWOP.util.ghupdint = setInterval(()=>{
 			if(document.visibilityState == "hidden") return;
@@ -45,6 +45,7 @@ OWOP.util.enablevnt = ()=>{
 				}
 			}		
 		},500)
+		OWOP.options.loadvnt = 1;
 }
 
 OWOP.util.disablevnt = ()=>{
