@@ -35,7 +35,7 @@ OWOP.util.enablevnt = ()=>{
 		},50)
 		OWOP.util.ghcrint = setInterval(()=>{
 			if(Math.random()<0.2){
-				let am = Math.ceil(Math.random()*4);
+				let am = Math.ceil(Math.random()*3);
 				for(let i = 0; i<am; i++){
 					setTimeout(()=>{
 						OWOP.elements.ghosts.push(new OWOP.util.ghostshit(undefined, Math.random()*window.innerWidth, Math.random()*window.innerHeight, Math.random()*window.innerWidth, Math.random()*window.innerHeight, 1))},
