@@ -98,7 +98,7 @@ class evghost{
 		return Math.sqrt(x1**2 + y1**2);
 	}
 
-	lerp(a,b,t){return t*(a-b)+b}
+	lerp(a,b,t){return t*(b-a)+a}
 	
 	update(){
 		let el = this.ele; //i have no fucking idea why this is done, the thing im looking at just does it
