@@ -119,7 +119,8 @@ class evghost{
         	let xMin = xFloor & 0xFF; 256;
         	let xMax = (xMin + 1) & 0xFF; 255;
         	let y = this.lerp(this.r[xMin], this.r[xMax], tRemapSmoothstep);
-        	console.log(return y * 75);
+        	console.log(y);
+		return y * 75;
     	};
 
 	draw(){
@@ -143,7 +144,7 @@ class evghost{
 		this.x = this.lerp(this.ix,this.ty,this.p)+this.noise(this.p*100);
 		this.y = this.lerp(this.iy,this.ty,this.p)+this.noise(this.p*100+100);
 		el.style.opacity = Math.min(this.dst(this.x, this.y, this.ix, this.iy)/500, this.dst(this.x, this.y, this.tx, this.ty)/500, 1)
-		this.p += 0.001;
+		this.p += 0.005;
 		if(this.doe && this.p >= 1){return this.del()}
 	}
 
