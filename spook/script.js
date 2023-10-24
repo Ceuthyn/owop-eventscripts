@@ -106,7 +106,7 @@ class evghost{
 		el.style.top = this.lerp(this.iy,this.ty,this.p)+'px';
 		this.x = this.lerp(this.ix,this.ty,this.p);
 		this.y = this.lerp(this.iy,this.ty,this.p);
-		el.style.opacity = Math.min(this.dst(this.x, this.y, this.tx, this.ty)/500, 1)
+		el.style.opacity = Math.min(this.dst(this.x, this.y, this.ix, this.iy)/500, this.dst(this.x, this.y, this.tx, this.ty)/500, 1)
 		this.p += 0.01;
 		if(this.doe && this.p >= 1){return this.del}
 	}
