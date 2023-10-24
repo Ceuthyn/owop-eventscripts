@@ -85,7 +85,7 @@ class evghost{
 		this.draw();
     		this.r = [];
     		for(let i=0;i<256;++i){
-        		r.push(Math.random());
+        		this.r.push(Math.random());
     		}
 	}
 	
