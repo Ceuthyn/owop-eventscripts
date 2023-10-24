@@ -29,11 +29,13 @@ OWOP.util.enablevnt = ()=>{
 		OWOP.util.ghostshit = evghost;
 		OWOP.elements.ghosts = [];
 		OWOP.util.ghupdint = setInterval(()=>{
+			if(document.visibilityState == "hidden") return;
 			for(let i = 0; i<OWOP.elements.ghosts.length; i++){
 				if(OWOP.elements.ghosts[i].update()){OWOP.elements.ghosts.splice(i,1); i--}
 			}
 		},50)
 		OWOP.util.ghcrint = setInterval(()=>{
+			if(document.visibilityState == "hidden") return;
 			if(Math.random()<0.2){
 				let am = Math.ceil(Math.random()*2);
 				for(let i = 0; i<am; i++){
