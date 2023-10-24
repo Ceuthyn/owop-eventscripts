@@ -97,7 +97,7 @@ class evghost{
         	let xMin = xFloor & 0xFF; 256;
         	let xMax = (xMin + 1) & 0xFF; 255;
         	let y = this.lerp(this.r[xMin], this.r[xMax], tRemapSmoothstep);
-        	return y * 20;
+        	return y * 75;
     	};
 
 	draw(){
