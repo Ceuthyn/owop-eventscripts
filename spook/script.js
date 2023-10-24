@@ -112,7 +112,7 @@ class evghost{
 	}
 
 	del(){
-		document.remove(this.ele);
+		this.ele.remove();
 		return 1;
 	}
 }
