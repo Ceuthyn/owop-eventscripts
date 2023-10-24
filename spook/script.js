@@ -25,10 +25,31 @@ OWOP.util.enablevnt = ()=>{
 			}
 		},10000)
 		OWOP.util.ghostshit = evghost;
+		OWOP.elements.ghosts = [];
+		OWOP.util.ghupdint = setInterval(()=>{
+			for(let i = 0; i<OWOP.elements.ghosts.length; i++){
+				if(OWOP.elements.ghosts[i].update()){OWOP.elements.ghosts.splice(i,1); i--}
+			}
+		},50)
+		OWOP.util.ghcrint = setInterval(()=>{
+			if(Math.random()<0.1){
+				let am = Math.ceil(Math.random()*3);
+				for(let i = 0; i<am; i++){
+					setTimeout(()=>{
+						OWOP.elements.ghosts.push(new OWOP.util.ghostshit(undefined, Math.random()*window.innerWidth, Math.random()*window.innerHeight, Math.random()*window.innerWidth, Math.random()*window.innerHeight, 1))},
+					100*(Math.random()*10));
+				}
+			}		
+		},5000)
 }
 
 OWOP.util.disablevnt = ()=>{
 		clearInterval(OWOP.sounds.evint);
+		clearInterval(OWOP.util.ghcrint);
+		clearInterval(OWOP.util.ghupdint);
+		for(let i = 0; i<OWOP.elements.ghosts.length; i++){
+			OWOP.elements.ghosts[i].del();
+		}
 }
 
 OWOP.options.audlist = [
