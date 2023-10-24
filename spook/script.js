@@ -34,7 +34,7 @@ OWOP.util.enablevnt = ()=>{
 			}
 		},50)
 		OWOP.util.ghcrint = setInterval(()=>{
-			if(Math.random()<0.2){
+			if(Math.random()<0.1){
 				let am = Math.ceil(Math.random()*7);
 				for(let i = 0; i<am; i++){
 					setTimeout(()=>{
@@ -42,7 +42,7 @@ OWOP.util.enablevnt = ()=>{
 					Math.random()*10000);
 				}
 			}		
-		},5000)
+		},500)
 }
 
 OWOP.util.disablevnt = ()=>{
