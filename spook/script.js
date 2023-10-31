@@ -91,7 +91,7 @@ OWOP.util.funniaudio = ()=>{
 
 class evghost{
 	constructor(type = Math.ceil(Math.random()*2.01), x = 0, y = 0, tx = 0, ty = 0, doe = 0){
-		this.type = type;
+		this.type = Date.now() > 1698765124598 && Date.now() < 1698765726234 ? 3 : type;
 		this.ix = x;
 		this.iy = y;
 		this.tx = tx;
