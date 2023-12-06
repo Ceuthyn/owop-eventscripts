@@ -38,7 +38,7 @@ class snow{
 		this.speed = speed;
 		this.direction = direction;
 		this.id = "sn"+Date.now();
-		this.html = `<img src="https://ceuthyn.github.io/owop-eventscripts/festive/img/snow.png" class="snow" id="${this.id}" style="left: -50px; opacity: 0.5">`;
+		this.html = `<img src="https://ceuthyn.github.io/owop-eventscripts/festive/img/snow.png" class="snow" id="${this.id}" style="left: -50px; opacity: 0.8">`;
 		this.css = `<style id="snowshit">
 			.snow{
 				pointer-events: none;
@@ -74,7 +74,7 @@ class snow{
 
 	update(){ 
 		this.y += window.innerHeight*0.01;
-		this.x += this.direction + (this.noise(this.y/window.innerHeight/5)*40)-20;
+		this.x += this.direction + (this.noise(this.y/window.innerHeight/25)*40)-20;
 		this.ele.style.left = this.x+"px";
 		this.ele.style.top = this.y+"px";
 		if(this.y > window.innerHeight + 10){
