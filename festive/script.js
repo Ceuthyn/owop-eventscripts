@@ -31,7 +31,7 @@ OWOP.util.enablevnt = ()=>{
 		}
 		if(OWOP.elements.snow.length < 200){
 			OWOP.elements.snow.push(
-				new OWOP.util.snow((Math.random()*(window.innerWidth + 200))-100, 0.5 + (Math.random()*1.5), 0)
+				new OWOP.util.snow((Math.random()*(window.innerWidth + 200))-100, 0.5 + (Math.random()*1.5), 0, 4.5 + Math.random(), 360*Math.random())
 			)
 		}
 
@@ -46,17 +46,19 @@ OWOP.util.disablevnt = ()=>{
 }
 
 class snow{
-	constructor(x, speed, direction){
+	constructor(x, speed, direction, size, rotation){
 		this.y = 0; //:3 i have no idea what im doing
 		this.x = x;
 		this.speed = speed;
 		this.direction = direction;
+		this.size = size;
+		this.rotation = rotation;
 		this.id = "sn"+Date.now();
-		this.html = `<img src="https://ceuthyn.github.io/owop-eventscripts/festive/img/snow.png" class="snow" id="${this.id}" style="left: -50px; opacity: 0.8">`;
+		this.html = `<img src="https://ceuthyn.github.io/owop-eventscripts/festive/img/snow.png" class="snow" id="${this.id}" style="left: -50px; opacity: 0.8; rotate: ${this.rotation}deg;">`;
 		this.css = `<style id="snowshit">
 			.snow{
 				pointer-events: none;
-				width: 5%;
+				width: ${this.size}%;
 				position: absolute;
 				z-index: 10;
 				image-rendering: pixelated;
