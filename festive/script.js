@@ -38,7 +38,7 @@ class snow{
 		this.speed = speed;
 		this.direction = direction;
 		this.id = Date.now()+"sn";
-		this.hmtl = `<img src="https://ceuthyn.github.io/owop-eventscripts/festive/img/snow.png" class="snow" id="${this.id} style="left: -50px; opacity: 0.5">`;
+		this.hmtl = `<img src="https://ceuthyn.github.io/owop-eventscripts/festive/img/snow.png" class="snow" id="${this.id}" style="left: -50px; opacity: 0.5">`;
 		this.css = `<style id="snowshit">
 			.snow{
 				pointer-events: none;
