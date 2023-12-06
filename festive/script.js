@@ -20,9 +20,35 @@ OWOP.util.loadvnttrig = ()=>{
 }
 
 OWOP.util.enablevnt = ()=>{
-
+	OWOP.elements.snow = [];
 }
 
 OWOP.util.disablevnt = ()=>{
+
+}
+
+class snow{
+	constructor(x, speed, direction){
+		this.x = x;
+		this.speed = speed;
+		this.direction = direction;
+		this.id = Date.now()+"sn";
+		this.hmtl = `<img src="https://ceuthyn.github.io/owop-eventscripts/festive/img/snow.png" class="snow" id="${this.id} style="left: -50px; opacity: 0.5">`;
+		this.css = `<style id="snowshit">
+			.snow{
+				pointer-events: none;
+				width: 1%;
+				position: absolute;
+				z-index: 10;
+				image-rendering: pixelated;
+			}
+		</style>`
+		document.body.insertAdjacentHTML('beforeEnd', this.html);
+		if(document.getElementById("snowshit") == null){
+			document.body.insertAdjacentHTML('beforeEnd', this.css);
+		}
+		this.ele = document.getElementById(this.id);
+	}
+
 
 }
