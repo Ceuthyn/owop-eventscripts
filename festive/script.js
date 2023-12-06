@@ -42,7 +42,7 @@ class snow{
 		this.css = `<style id="snowshit">
 			.snow{
 				pointer-events: none;
-				width: 1%;
+				width: 5%;
 				position: absolute;
 				z-index: 10;
 				image-rendering: pixelated;
@@ -74,7 +74,7 @@ class snow{
 
 	update(){ 
 		this.y += window.innerHeight*0.01;
-		this.x += this.direction + this.noise(this.y/window.innerHeight/5);
+		this.x += this.direction + (this.noise(this.y/window.innerHeight/5)*40)-20;
 		this.ele.style.left = this.x+"px";
 		this.ele.style.top = this.y+"px";
 		if(this.y > window.innerHeight + 10){
