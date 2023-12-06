@@ -60,7 +60,7 @@ class snow{
 	}
 
 	noise(x){ //behold, stolen code i have no idea where i got
-		let scaledX = x*0.05;
+		let scaledX = x;
 		let xFloor = Math.floor(scaledX);
 		let t = scaledX - xFloor;
 		let tRemapSmoothstep = t * t * (3-2*t);
@@ -74,8 +74,8 @@ class snow{
 
 	update(){ 
 		this.y += window.innerHeight*0.01;
-		console.log(this.noise(this.y/window.innerHeight*10))
-		this.x += this.direction + (this.noise(this.y/window.innerHeight*10));
+		console.log(this.noise(this.y/window.innerHeight*10)*20)
+		this.x += this.direction + (this.noise(this.y/window.innerHeight*10)*20);
 		this.ele.style.left = this.x+"px";
 		this.ele.style.top = this.y+"px";
 		if(this.y > window.innerHeight + 10){
