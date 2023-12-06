@@ -88,7 +88,6 @@ class snow{
 
 	update(){ 
 		this.y += window.innerHeight*0.01*this.speed;
-		console.log(this.noise(this.y/window.innerHeight*10)*20)
 		this.x += (this.direction + (this.noise(this.y/window.innerHeight*10)*20))*this.speed;
 		this.ele.style.left = this.x+"px";
 		this.ele.style.top = this.y+"px";
