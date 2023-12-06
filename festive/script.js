@@ -21,14 +21,19 @@ OWOP.util.loadvnttrig = ()=>{
 
 OWOP.util.enablevnt = ()=>{
 	OWOP.elements.snow = [];
+	OWOP.util.snow = snow;
 }
 
 OWOP.util.disablevnt = ()=>{
-
+	for(let i = 0; i<OWOP.elements.snow.length; i++){
+		OWOP.elements.snow[i].deleteself();
+	}
+	delete OWOP.elements.snow;
 }
 
 class snow{
 	constructor(x, speed, direction){
+		this.y = 0; //:3 i have no idea what im doing
 		this.x = x;
 		this.speed = speed;
 		this.direction = direction;
@@ -48,7 +53,37 @@ class snow{
 			document.body.insertAdjacentHTML('beforeEnd', this.css);
 		}
 		this.ele = document.getElementById(this.id);
+		this.r = [];
+		for(let i = 0; i<256; i++){
+			this.r.push(Math.random());
+		}
 	}
 
+	noise(x){ //behold, stolen code i have no idea where i got
+		let scaledX = x*0.05;
+		let xFloor = Math.floor(scaledX);
+		let t = scaledX - xFloor;
+		let tRemapSmoothstep = t * t * (3-2*t);
+		let xMin = xFloor & 0xFF;
+		let xMax = (xMin + 1) & 0xFF;
+		let y = this.lerp(this.r[xMin], this.r[xMax], tRemapSmoothstep);
+		return (y-0.5) * 0.75;
+	}
 
+	lerp(a,b,t){return t*(b-a)+a};
+
+	update(){ 
+		this.y += window.innerHeight*0.01;
+		this.x += this.direction + this.noise(this.y/window.innerHeight/5);
+		this.ele.style.left = this.x;
+		this.ele.style.top = this.y;
+		if(this.y > window.innerHeight + 10){
+			this.deleteself();
+			return true;
+		}
+	}
+
+	deleteself(){
+		this.ele.remove();
+	}
 }
