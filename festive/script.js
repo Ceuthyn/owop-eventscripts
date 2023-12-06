@@ -28,16 +28,13 @@ OWOP.util.enablevnt = ()=>{
 				OWOP.elements.snow.splice(i,1);
 				i--;
 			}
-			if(OWOP.elements.snow.length < 200){
-				OWOP.elements.snow.push(
-					new OWOP.util.snow(
-						(Math.random()*(window.innerWidth + 200))-100,
-						0.5 + (Math.random()*1.5),
-						0
-					)
-				)
-			}
 		}
+		if(OWOP.elements.snow.length < 200){
+			OWOP.elements.snow.push(
+				new OWOP.util.snow((Math.random()*(window.innerWidth + 200))-100, 0.5 + (Math.random()*1.5), 0)
+			)
+		}
+
 	},50)
 }
 
