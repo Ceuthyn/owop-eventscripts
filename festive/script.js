@@ -22,6 +22,23 @@ OWOP.util.loadvnttrig = ()=>{
 OWOP.util.enablevnt = ()=>{
 	OWOP.elements.snow = [];
 	OWOP.util.snow = snow;
+	OWOP.util.snowint = setInterval(()=>{
+		for(let i = 0; i<OWOP.elements.snow.length; i++){
+			if(OWOP.elements.snow[i].update()){
+				OWOP.elements.snow.splice(i,1);
+				i--;
+			}
+			if(OWOP.elements.snow.length < 200){
+				OWOP.elements.snow.push(
+					new OWOP.util.snow(
+						(Math.random()*(window.innerWidth + 200))-100,
+						0.5 + (Math.random()*1.5),
+						0
+					)
+				)
+			}
+		}
+	},50)
 }
 
 OWOP.util.disablevnt = ()=>{
@@ -73,9 +90,9 @@ class snow{
 	lerp(a,b,t){return t*(b-a)+a};
 
 	update(){ 
-		this.y += window.innerHeight*0.01;
+		this.y += window.innerHeight*0.01*this.speed;
 		console.log(this.noise(this.y/window.innerHeight*10)*20)
-		this.x += this.direction + (this.noise(this.y/window.innerHeight*10)*20);
+		this.x += (this.direction + (this.noise(this.y/window.innerHeight*10)*20))*this.speed;
 		this.ele.style.left = this.x+"px";
 		this.ele.style.top = this.y+"px";
 		if(this.y > window.innerHeight + 10){
