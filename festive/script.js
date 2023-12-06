@@ -74,7 +74,8 @@ class snow{
 
 	update(){ 
 		this.y += window.innerHeight*0.01;
-		this.x += this.direction + (this.noise(this.y/window.innerHeight/25)*40)-20;
+		console.log(this.noise(this.y/window.innerHeight/25))
+		this.x += this.direction + (this.noise(this.y/window.innerHeight/25);
 		this.ele.style.left = this.x+"px";
 		this.ele.style.top = this.y+"px";
 		if(this.y > window.innerHeight + 10){
