@@ -15,7 +15,7 @@ OWOP.util.toggleevent = ()=>{ //literally just the thing for the button
 
 OWOP.util.loadvnttrig = ()=>{
 	if(OWOP.options.eventoggle == 1){
-		OWOP.util.evablevnt();
+		OWOP.util.enablevnt();
 	}
 }
 
