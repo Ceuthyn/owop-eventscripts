@@ -14,13 +14,15 @@ OWOP.util.toggleevent = ()=>{ //literally just the thing for the button
 }
 
 OWOP.util.loadvnttrig = ()=>{
-	if(OWOP.options.eventoggle == 1){
+	if(OWOP.options.eventoggle == 1 && OWOP.util.enabled != 1){
 		OWOP.util.enablevnt();
 	}
 }
 
 OWOP.util.enablevnt = ()=>{
+	OWOP.util.enabled = 1; //because of reconnecting, we need this to not have everything freeze and remain
 	OWOP.elements.snow = [];
+	OWOP.util.winddir = 0;
 	OWOP.util.snow = snow;
 	OWOP.util.snowint = setInterval(()=>{
 		for(let i = 0; i<OWOP.elements.snow.length; i++){
@@ -31,14 +33,16 @@ OWOP.util.enablevnt = ()=>{
 		}
 		if(OWOP.elements.snow.length < 200){
 			OWOP.elements.snow.push(
-				new OWOP.util.snow((Math.random()*(window.innerWidth + 200))-100, 0.5 + (Math.random()*1.5), 0, 4.5 + Math.random(), 360*Math.random())
+				new OWOP.util.snow((Math.random()*(window.innerWidth + 200))-100, 0.5 + (Math.random()*1.5), OWOP.util.winddir, 4.5 + Math.random()*2, 360*Math.random())
 			)
 		}
+		OWOP.util.winddir = Math.min(Math.max(OWOP.util.winddir + (Math.random()-0.5)/10,0.5),-0.5);
 
 	},50)
 }
 
 OWOP.util.disablevnt = ()=>{
+	OWOP.util.enabled = 0;
 	for(let i = 0; i<OWOP.elements.snow.length; i++){
 		OWOP.elements.snow[i].deleteself();
 	}
