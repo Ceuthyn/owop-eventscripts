@@ -33,7 +33,7 @@ OWOP.util.enablevnt = ()=>{
 		}
 		if(OWOP.elements.snow.length < 200){
 			OWOP.elements.snow.push(
-				new OWOP.util.snow((Math.random()*(window.innerWidth + 200))-100, 0.5 + (Math.random()*1.5, OWOP.options.winddir * 4, 3 + Math.random()*4, 360*Math.random())
+				new OWOP.util.snow((Math.random()*(window.innerWidth + 200))-100, 0.5 + Math.random()*1.5, OWOP.options.winddir * 4, 3 + Math.random()*4, 360*Math.random())
 			)
 		}
 		OWOP.options.winddir = Math.max(Math.min(OWOP.options.winddir + (Math.random()-0.5)/10,1),-1);
