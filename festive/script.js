@@ -22,7 +22,7 @@ OWOP.util.loadvnttrig = ()=>{
 OWOP.util.enablevnt = ()=>{
 	OWOP.util.enabled = 1; //because of reconnecting, we need this to not have everything freeze and remain
 	OWOP.elements.snow = [];
-	OWOP.util.winddir = 0;
+	OWOP.options.winddir = 0;
 	OWOP.util.snow = snow;
 	OWOP.util.snowint = setInterval(()=>{
 		for(let i = 0; i<OWOP.elements.snow.length; i++){
@@ -33,10 +33,10 @@ OWOP.util.enablevnt = ()=>{
 		}
 		if(OWOP.elements.snow.length < 200){
 			OWOP.elements.snow.push(
-				new OWOP.util.snow((Math.random()*(window.innerWidth + 200))-100, 0.5 + (Math.random()*1.5 + Math.abs(OWOP.options.winddir)), OWOP.util.winddir, 4.5 + Math.random()*2, 360*Math.random())
+				new OWOP.util.snow((Math.random()*(window.innerWidth + 200))-100, 0.5 + (Math.random()*1.5 + Math.abs(OWOP.options.winddir)), OWOP.options.winddir, 4.5 + Math.random()*2, 360*Math.random())
 			)
 		}
-		OWOP.util.winddir = Math.max(Math.min(OWOP.util.winddir + (Math.random()-0.5)/10,1),-1);
+		OWOP.options.winddir = Math.max(Math.min(OWOP.options.winddir + (Math.random()-0.5)/10,1),-1);
 
 	},50)
 }
