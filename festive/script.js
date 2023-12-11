@@ -51,13 +51,19 @@ OWOP.util.enablevnt = ()=>{
                         .dayb:hover {
                                 color: #ff0000;
                         }
+			.disday {
+				color: #333333;
+				background-color: #888888;
+			}
                 </style>`
                 let div = document.createElement('div');
                 div.style.display = "grid";
                 div.style["grid-template-columns"] = "50% 50%";
                 t.container.appendChild(div);
+		let day = new Date().getDay();
+		let month = new Date().getMonth();
                 for(let i = 1; i<=12; i++){
-                        div.innerHTML += `<button class="dayb" style="width: 100%" onclick="OWOP.util.advclick(${i})">${i}</button>`;
+                        div.innerHTML += `<button class="${month != 11 ? "dayb" : day < i ? "dayb" : "disday"}" ${month != 11 ? "" : day < i ? "" : "disabled"} style="width: 100%" onclick="OWOP.util.advclick(${i})">${i}</button>`;
                 }
         }).move(0,window.innerHeight/2))
 }
