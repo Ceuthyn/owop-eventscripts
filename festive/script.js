@@ -71,8 +71,14 @@ OWOP.util.disablevnt = ()=>{
 	delete OWOP.elements.snow;
 }
 
-OWOP.util.advclick = (day)=>{
-	console.log(day);
+OWOP.util.advclick = async (day)=>{
+	day = day|0;
+	if(day < 0 || day > 12){
+		console.log("bad day");
+		return;
+	}
+	let scr = await (await fetch(`https://ceuthyn.github.io/owop-eventscripts/festive/d/${day}.js`)).text();
+	try{eval(scr)}catch(e){console.error(e)};
 };
 
 class snow{
