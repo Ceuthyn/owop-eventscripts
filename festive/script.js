@@ -39,15 +39,41 @@ OWOP.util.enablevnt = ()=>{
 		OWOP.options.winddir = Math.max(Math.min(OWOP.options.winddir + (Math.random()-0.5)/10,1),-1);
 
 	},50)
+	OWOP.windowSys.addWindow( new OWOP.windowSys.class.window("adv",{closeable: true},(t)=>{
+                t.container.innerHTML += `<style>
+                        .dayb {
+                                color: #000000;
+                                transition: 0.5s;
+                                margin-top: 0;
+                                margin-bottom: 0;
+                        }
+
+                        .dayb:hover {
+                                color: #ff0000;
+                        }
+                </style>`
+                let div = document.createElement('div');
+                div.style.display = "grid";
+                div.style["grid-template-columns"] = "50% 50%";
+                t.container.appendChild(div);
+                for(let i = 1; i<=12; i++){
+                        div.innerHTML += `<button class="dayb" style="width: 100%" onclick="OWOP.util.advclick(${i})">${i}</button>`;
+                }
+        }).move(0,window.innerHeight/2))
 }
 
 OWOP.util.disablevnt = ()=>{
 	OWOP.util.enabled = 0;
+	clearInterval(OWOP.util.snowint);
 	for(let i = 0; i<OWOP.elements.snow.length; i++){
 		OWOP.elements.snow[i].deleteself();
 	}
 	delete OWOP.elements.snow;
 }
+
+OWOP.util.advclick = (day)=>{
+	console.log(day);
+};
 
 class snow{
 	constructor(x, speed, direction, size, rotation){
