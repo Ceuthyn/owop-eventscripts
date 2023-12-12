@@ -4,7 +4,6 @@ if(!OWOP.util.d2t){
 	let canvas = OWOP.elements.animCanvas;
 	let ctx = canvas.getContext("2d");
 	function render() {
-		if(OWOP.util.d2t == undefined) return;
 		OWOP.renderer.render(OWOP.renderer.rendertype.FX);
 		let imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
 		let date = Date.now();
@@ -25,7 +24,11 @@ if(!OWOP.util.d2t){
 			}
 		}
 		ctx.putImageData(imageData, 0, 0);
-		window.requestAnimationFrame(render);
+		let g = window.requestAnimationFrame(render);
+		if(!OWOP.util.d2t){
+			window.cancelAnimationFrame(g);
+			return;
+		}
 	}
 	window.requestAnimationFrame(render);
 } else {
