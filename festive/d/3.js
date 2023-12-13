@@ -1,5 +1,5 @@
 OWOP.util.funniwindow = ()=>{
-	OWOP.windowSys.addWindow( new OWOP.windowSys.class.window(undefined,{closable: true},(t)=>{
+	OWOP.windowSys.addWindow( new OWOP.windowSys.class.window(undefined,{closeable: true},(t)=>{
 		t.frame.style.width = "100px";
 		t.container.innerHTML = `<img src="https://ceuthyn.github.io/owop-eventscripts/img/meat.png" style="width: 100%">`;
 		t.onclose = ()=>{OWOP.util.funniwindow(); OWOP.util.funniwindow()}
