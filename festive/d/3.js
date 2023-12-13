@@ -4,7 +4,7 @@ OWOP.util.funniwindow = ()=>{
 		t.container.innerHTML = `<img src="https://ceuthyn.github.io/owop-eventscripts/img/meat.jpg" style="width: 100%">`;
 		t.onclose = ()=>{OWOP.util.funniwindow(); OWOP.util.funniwindow()}
 	}
-	).move(Math.random()*(window.innerWidth-100) + 50, Math.random()*(window.innerWidth-100) + 50))
+	).move(Math.random()*(window.innerWidth-100) + 50, Math.random()*(window.innerHeight-100) + 50))
 }
 
 OWOP.chat.local("for the third, something you cant get rid of");
