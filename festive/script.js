@@ -50,7 +50,7 @@ OWOP.util.enablevnt = ()=>{
                         div.innerHTML += `<button class="${month != 11 ? "dayb" : day >= i ? "dayb" : "disday"}" ${month != 11 ? "" : day >= i ? "" : "disabled"} style="width: 100%" onclick="OWOP.util.advclick(${i})">${i}</button>`;
                 }
         }).move(0,window.innerHeight/2))
-	if(OWOP.options.snowen) OWOP.util.enablesnow();
+	if(OWOP.options.snowen == 1) OWOP.util.enablesnow();
 	OWOP.chat.local(`<button type="button" id="vntbutton" onclick="OWOP.util.togglesnow()">toggle snow</button>`);
 }
 
@@ -90,6 +90,7 @@ OWOP.util.disablesnow = ()=>{
 }
 
 OWOP.util.togglesnow = ()=>{
+	if(!OWOP.util.enabled) return;
 	OWOP.options.snowen = localStorage.getItem("evtoggleadit") == 0 ? 1 : 0;
 	if(localStorage.getItem("evtoggleadit")==undefined) OWOP.options.snowen = true;
 	localStorage.setItem("evtoggleadit", OWOP.options.snowen);
