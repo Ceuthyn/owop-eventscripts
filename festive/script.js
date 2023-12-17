@@ -1,4 +1,5 @@
 OWOP.options.eventoggle = localStorage.getItem("evtoggle");
+OWOP.options.snowen = localStorage.getItem("evtoggleadit");
 
 OWOP.util.toggleevent = ()=>{ //literally just the thing for the button
 	OWOP.options.eventoggle = localStorage.getItem("evtoggle")==0 || localStorage.getItem("evtoggle")==undefined? 1 : 0;
@@ -21,24 +22,6 @@ OWOP.util.loadvnttrig = ()=>{
 
 OWOP.util.enablevnt = ()=>{
 	OWOP.util.enabled = 1; //because of reconnecting, we need this to not have everything freeze and remain
-	OWOP.elements.snow = [];
-	OWOP.options.winddir = 0;
-	OWOP.util.snow = snow;
-	OWOP.util.snowint = setInterval(()=>{
-		for(let i = 0; i<OWOP.elements.snow.length; i++){
-			if(OWOP.elements.snow[i].update()){
-				OWOP.elements.snow.splice(i,1);
-				i--;
-			}
-		}
-		if(OWOP.elements.snow.length < 200){
-			OWOP.elements.snow.push(
-				new OWOP.util.snow((Math.random()*(window.innerWidth + 200))-100, 0.5 + Math.random()*1.5, OWOP.options.winddir * 4, 3 + Math.random()*4, 360*Math.random())
-			)
-		}
-		OWOP.options.winddir = Math.max(Math.min(OWOP.options.winddir + (Math.random()-0.5)/10,1),-1);
-
-	},50)
 	OWOP.windowSys.addWindow( new OWOP.windowSys.class.window("adv",{closeable: true},(t)=>{
                 t.container.innerHTML += `<style>
                         .dayb {
@@ -67,15 +50,55 @@ OWOP.util.enablevnt = ()=>{
                         div.innerHTML += `<button class="${month != 11 ? "dayb" : day >= i ? "dayb" : "disday"}" ${month != 11 ? "" : day >= i ? "" : "disabled"} style="width: 100%" onclick="OWOP.util.advclick(${i})">${i}</button>`;
                 }
         }).move(0,window.innerHeight/2))
+	if(OWOP.options.snowen) OWOP.util.enablesnow();
+	OWOP.chat.local(`<button type="button" id="vntbutton" onclick="OWOP.util.togglesnow()">toggle snow</button>`);
 }
 
 OWOP.util.disablevnt = ()=>{
 	OWOP.util.enabled = 0;
+	OWOP.util.disablesnow();
+}
+
+OWOP.util.enablesnow = ()=>{
+	if(OWOP.options.snowen) return;
+	OWOP.options.snowurl = "https://ceuthyn.github.io/owop-eventscripts/festive/img/snow.png";
+	OWOP.elements.snow = [];
+	OWOP.options.winddir = 0;
+	OWOP.util.snow = snow;
+	OWOP.util.snowint = setInterval(()=>{
+		for(let i = 0; i<OWOP.elements.snow.length; i++){
+			if(OWOP.elements.snow[i].update()){
+				OWOP.elements.snow.splice(i,1);
+				i--;
+			}
+		}
+		if(OWOP.elements.snow.length < 200){
+			OWOP.elements.snow.push(
+				new OWOP.util.snow((Math.random()*(window.innerWidth + 200))-100, 0.5 + Math.random()*1.5, OWOP.options.winddir * 4, 3 + Math.random()*4, 360*Math.random())
+			)
+		}
+		OWOP.options.winddir = Math.max(Math.min(OWOP.options.winddir + (Math.random()-0.5)/10,1),-1);
+
+	},50)
+}
+
+OWOP.util.disablesnow = ()=>{
+	if(!OWOP.options.snowen) return;
 	clearInterval(OWOP.util.snowint);
 	for(let i = 0; i<OWOP.elements.snow.length; i++){
 		OWOP.elements.snow[i].deleteself();
 	}
 	delete OWOP.elements.snow;
+}
+
+OWOP.util.togglesnow = ()=>{
+	OWOP.options.snowen = localStorage.getItem("evtoggleadit") == 0 || localStorage.getItem("evtoggleadit")==undefined? 1 : 0;
+	localStorage.setItem("evtoggleadit", OWOP.options.snowen);
+	if(OWOP.options.snowen){
+		OWOP.util.enablesnow();
+	} else {
+		OWOP.util.disablesnow();
+	}
 }
 
 OWOP.util.advclick = async (day)=>{
@@ -97,7 +120,7 @@ class snow{
 		this.size = size;
 		this.rotation = rotation;
 		this.id = "sn"+Date.now();
-		this.html = `<img src="https://ceuthyn.github.io/owop-eventscripts/festive/img/snow.png" class="snow" id="${this.id}" style="left: -50px; opacity: 0.8; rotate: ${this.rotation}deg;">`;
+		this.html = `<img src="${OWOP.options.snowurl}" class="snow" id="${this.id}" style="left: -50px; opacity: 0.8; rotate: ${this.rotation}deg;">`;
 		this.css = `<style id="snowshit">
 			.snow{
 				pointer-events: none;
