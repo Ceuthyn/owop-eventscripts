@@ -90,7 +90,8 @@ OWOP.util.disablesnow = ()=>{
 }
 
 OWOP.util.togglesnow = ()=>{
-	OWOP.options.snowen = localStorage.getItem("evtoggleadit") == 0 || localStorage.getItem("evtoggleadit")==undefined? 1 : 0;
+	OWOP.options.snowen = localStorage.getItem("evtoggleadit") == 0 ? 1 : 0;
+	if(localStorage.getItem("evtoggleadit")==undefined) OWOP.options.snowen = true;
 	localStorage.setItem("evtoggleadit", OWOP.options.snowen);
 	if(OWOP.options.snowen){
 		OWOP.util.enablesnow();
