@@ -60,7 +60,6 @@ OWOP.util.disablevnt = ()=>{
 }
 
 OWOP.util.enablesnow = ()=>{
-	if(OWOP.options.snowen) return;
 	OWOP.options.snowurl = "https://ceuthyn.github.io/owop-eventscripts/festive/img/snow.png";
 	OWOP.elements.snow = [];
 	OWOP.options.winddir = 0;
@@ -83,7 +82,6 @@ OWOP.util.enablesnow = ()=>{
 }
 
 OWOP.util.disablesnow = ()=>{
-	if(!OWOP.options.snowen) return;
 	clearInterval(OWOP.util.snowint);
 	for(let i = 0; i<OWOP.elements.snow.length; i++){
 		OWOP.elements.snow[i].deleteself();
