@@ -228,6 +228,6 @@ OWOP.windowSys.addWindow(new OWOP.windowSys.class.window("cookied",{closeable: t
 		},50)
 		t.onclose = ()=>{
 			clearInterval(OWOP.game.int);
-			delete OWOP.game
+			setTimeout(()=>{delete OWOP.game},500);
 		}
 }))
