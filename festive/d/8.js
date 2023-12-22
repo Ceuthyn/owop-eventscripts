@@ -6,8 +6,8 @@ if(!OWOP.util.d2t3){
 	function render() {
 		OWOP.renderer.render(OWOP.renderer.rendertype.FX);
 		let imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-		for(let i = 0; i<imageData.data.length; i+=4){
-			imageData[i] = 255; 	
+		for (let i=0; i<imageData.data.length; i+=4) {
+			imageData.data[i + 0] = 127;
 		}
 		ctx.putImageData(imageData, 0, 0);
 		let g = window.requestAnimationFrame(render);
@@ -18,6 +18,6 @@ if(!OWOP.util.d2t3){
 	}
 	window.requestAnimationFrame(render);
 } else {
-	OWOP.chat.local("behold, green returns");
+	OWOP.chat.local("behold, the return of green");
 	OWOP.util.d2t3 = false;
 }
