@@ -1,4 +1,4 @@
-if(!OWOP.util.d2t3){
+if(!OWOP.util.d1t3){
 	OWOP.chat.local("eight, become (color)blind");
 	OWOP.util.d2t3 = true;
 	let canvas = OWOP.elements.animCanvas;
@@ -6,7 +6,7 @@ if(!OWOP.util.d2t3){
 	function render() {
 		OWOP.renderer.render(OWOP.renderer.rendertype.FX);
 		let imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-		for(let i = 0; i<imageData.length; i+=4){
+		for(let i = 0; i<imageData.data.length; i+=4){
 			imageData[i] = 255; 	
 		}
 		ctx.putImageData(imageData, 0, 0);
