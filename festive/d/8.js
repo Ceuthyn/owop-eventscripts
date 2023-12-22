@@ -1,4 +1,4 @@
-if(!OWOP.util.d1t3){
+if(!OWOP.util.d2t3){
 	OWOP.chat.local("eight, become (color)blind");
 	OWOP.util.d2t3 = true;
 	let canvas = OWOP.elements.animCanvas;
