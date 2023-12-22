@@ -11,7 +11,7 @@ if(!OWOP.util.d2t3){
 		}
 		ctx.putImageData(imageData, 0, 0);
 		let g = window.requestAnimationFrame(render);
-		if(!OWOP.util.d2t2){
+		if(!OWOP.util.d2t3){
 			window.cancelAnimationFrame(g);
 			return;
 		}
