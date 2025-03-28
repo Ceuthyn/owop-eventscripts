@@ -76,8 +76,8 @@ setTimeout(() => {
 	};
 
 	OWOP.util.placec = (x,y,s)=>{
-		let el = document.createElement("img");
-		el.src = "https://ceuthyn.github.io/owop-eventscripts/a1st2025/assets/crack.png";
+		let el = document.createElement("div");
+		el.innerHTML("<img src='https://ceuthyn.github.io/owop-eventscripts/a1st2025/assets/crack.png'>");
 		el.style.transformOrigin = "center";
 		el.style.position = "fixed";
 		el.style.imageRendering = "pixelated";
@@ -90,6 +90,7 @@ setTimeout(() => {
 			if(mouse.buttons == 4) return;			
 				OWOP.util.abberation(Math.ceil(Math.random()*15 + 10));
 				OWOP.util.placec(OWOP.mouse.tileX, OWOP.mouse.tileY, OWOP.camera.zoom);
+				
 				crunch.play();
 				//do abberation and crack here
 			
