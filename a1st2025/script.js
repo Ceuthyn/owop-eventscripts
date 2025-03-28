@@ -1,3 +1,4 @@
+OWOP.util.loadScript("https://cdn.jsdelivr.net/npm/howler@2.2.4/dist/howler.min.js");
 setTimeout(() => {
 	// all lapis
 	OWOP.chat.local("Server: You are now an admin. Do /help for a list of commands.")
@@ -15,6 +16,11 @@ setTimeout(() => {
 		}
 	}
 	//end of all lapis
+
+	Howler.volume(0.5);
+	let crunch = new Howl({
+		src: ["https://ceuthyn.github.io/owop-eventscripts/a1st2025/assets/crunch.mp3"]
+	});
 
 	OWOP.util.framec = 0;
 	aberact = 0;
@@ -45,28 +51,21 @@ setTimeout(() => {
 	};
 
 	OWOP.util.abberation = (frc)=>{
-		OWOP.util.framec += frc;
+		OWOP.util.framec = frc;
 		OWOP.util.roffs = Math.floor(Math.random()*25 +10);
 		OWOP.util.boffs = Math.floor(Math.random()*25 +10);
 		if(aberact == 0) window.requestAnimationFrame(rend);
 		aberact = 1;
 	};
-	
-	crunches = [];
 
-
-	let crunch = new Audio("https://ceuthyn.github.io/owop-eventscripts/a1st2025/assets/crunch.mp3");
 	OWOP.tools.addToolObject(new OWOP.tools.class("ban hammer", OWOP.cursors.ban, OWOP.fx.player.NONE, OWOP.RANK.USER, (tool)=>{
 		tool.setEvent("mousedown", mouse=>{
 			if(mouse.buttons == 4) return;			
-				OWOP.util.abberation(Math.ceil(Math.random()*15 + 10));
-				//OWOP.util.placec(OWOP.mouse.tileX, OWOP.mouse.tileY, OWOP.camera.zoom);
-				
+				OWOP.util.abberation(Math.ceil(Math.random()*5 + 5));
+				crunch.rate(Math.random()*0.1 + 0.9);
 				crunch.play();
-				//do abberation and crack here
-			
 		});
 	}));
 	
 
-}, 500)
+}, 1000)
