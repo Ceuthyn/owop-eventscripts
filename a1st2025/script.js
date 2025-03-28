@@ -77,7 +77,7 @@ setTimeout(() => {
 
 	OWOP.util.placec = (x,y,s)=>{
 		let el = document.createElement("div");
-		el.innerHTML("<img src='https://ceuthyn.github.io/owop-eventscripts/a1st2025/assets/crack.png'>");
+		el.innerHTML = "<img src='https://ceuthyn.github.io/owop-eventscripts/a1st2025/assets/crack.png'>";
 		el.style.transformOrigin = "center";
 		el.style.position = "fixed";
 		el.style.imageRendering = "pixelated";
