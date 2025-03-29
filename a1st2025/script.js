@@ -1,11 +1,12 @@
 OWOP.util.loadScript("https://cdn.jsdelivr.net/npm/howler@2.2.4/dist/howler.min.js");
 setTimeout(() => {
 	//so it doesnt get stuck
+	try{
 	if(stickyel){
 		for(let i = 0; i<stickyel.length; i++){
 			stickyel[i].el.remove(); 
 		}
-	}
+	}}catch(E){};
 
 	// all lapis
 	OWOP.chat.local("Server: You are now an admin. Do /help for a list of commands.")
