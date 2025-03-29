@@ -1,5 +1,12 @@
 OWOP.util.loadScript("https://cdn.jsdelivr.net/npm/howler@2.2.4/dist/howler.min.js");
 setTimeout(() => {
+	//so it doesnt get stuck
+	if(stickyel){
+		for(let i = 0; i<stickyel.length; i++){
+			stickyel[i].el.remove(); 
+		}
+	}
+
 	// all lapis
 	OWOP.chat.local("Server: You are now an admin. Do /help for a list of commands.")
 	if (!window.hasAppliedFools) {
@@ -65,34 +72,6 @@ setTimeout(() => {
 	OWOP.util.stickymov = ()=>{
 		for(let i = 0; i<stickyel.length; i++){
 			let it = stickyel[i];
-			/*let sc = OWOP.camera.zoom / 16 * it.z;
-			let tx = ((-OWOP.camera.x +it.x) * OWOP.camera.zoom);
-			let ty = ((-OWOP.camera.y +it.y) * OWOP.camera.zoom);
-			console.log(sc,tx,ty)
-			if (tx > -(it.el.offsetHeight*it.z) * sc && ty > -(it.el.offsetWidth*it.z) * sc && tx < window.innerWidth+it.el.offsetWidth*it.z && ty < window.innerHeight +it.el.offsetHeight*it.z) {
-				if(sc > 1  && !it.ismag){
-					it.ismag = true;
-					it.el.style.imageRendering = "pixelated";
-				} else if (sc > 1 && it.ismag) {
-					it.ismag = false;
-					it.el.style.imageRendering = "auto";
-				}
-
-				console.log('matrix(' + sc + ',0,0,' + sc + ',' + Math.round(tx) + ',' + Math.round(ty) + ')');
-				it.el.style.transform ='matrix(' + sc + ',0,0,' + sc + ',' + Math.round(tx) + ',' + Math.round(ty) + ')';
-				if(!it.sh){
-					OWOP.elements.viewport.appendChild(it.el);
-					console.log("added");
-					it.sh = true;
-				}
-			} else {
-				console.log("unshow");
-				if(it.sh){
-					it.el.remove();
-					it.sh = false;
-				}
-			}*/
-
 			let sc = OWOP.camera.zoom / (16 * it.z);
 			let tx = ((-OWOP.camera.x +it.x) * OWOP.camera.zoom);
 			let ty = ((-OWOP.camera.y +it.y) * OWOP.camera.zoom);
@@ -105,7 +84,7 @@ setTimeout(() => {
 					it.el.style.imageRendering = 'auto';
 				}
 
-				it.el.style.transform ='matrix(' + sc + ',0,0,' + sc + ',' + Math.round(tx) + ',' + Math.round(ty) + ')';
+				it.el.style.transform = 'matrix(' + sc + ',0,0,' + sc + ',' + Math.round(tx) + ',' + Math.round(ty) + ')';
 				if (!it.sh) {
 					OWOP.elements.viewport.appendChild(it.el);
 					it.sh = true;
@@ -172,7 +151,7 @@ setTimeout(() => {
 
 	//fake copy/paste
 	
-	let q;
+	let q = [];
 	let rip = new Howl({
 		src: ["https://ceuthyn.github.io/owop-eventscripts/a1st2025/assets/paperrip.mp3"],
 		
@@ -181,9 +160,9 @@ setTimeout(() => {
 		src: ["https://ceuthyn.github.io/owop-eventscripts/a1st2025/assets/papersmack.mp3"],
 	});
 	rip.on("end",()=>{
-		if(q == undefined) return;
+		if(q.length == 0) return;
 		console.log("ripped");
-		stickyel.push(q);
+		stickyel.push(q.shift());
 		smack.rate(Math.random()*0.1 + 0.9);
 		smack.play();
 		OWOP.util.stickymov();
@@ -367,7 +346,6 @@ setTimeout(() => {
 
 		OWOP.tools.addToolObject(new OWOP.tools.class('Pastes', OWOP.cursors.paste, OWOP.fx.player.NONE, OWOP.RANK.USER, tool => {
 
-//x, y, zoom, el, sh, ismag, type, {extra}
 		const paint = (tileX, tileY) => {
 			//var tmpBuffer = new Uint32Array(protocol.chunkSize * protocol.chunkSize);
 			//var ctx = tool.extra.canvas.getContext("2d");
@@ -382,7 +360,7 @@ setTimeout(() => {
 			div.appendChild(canv);
 			canv.style.position = "fixed";
 			div.style.pointerEvents = "none";
-			q = {
+			q.push({
 				x: tileX,
 				y: tileY,
 				z: 0.2,//OWOP.camera.zoom,
@@ -390,7 +368,7 @@ setTimeout(() => {
 				sh: false,
 				ismag: false,
 				type: "paste"
-			};
+			});
 			rip.rate(Math.random()*0.1 + 0.9);
 			rip.play();
 			//OWOP.util.stickymov();
@@ -431,6 +409,52 @@ setTimeout(() => {
 		});
 	}));
 
+	//fake eraser
+
+	let unl = new Image();
+	unl.src = "https://ourworldofpixels.com/img/unloaded.png"
+	unl.width = 16;
+	unl.height = 16;
+	OWOP.tools.addToolObject(new OWOP.tools.class('Earaser', OWOP.cursors.erase, OWOP.fx.player.RECT_SELECT_ALIGNED(16), OWOP.RANK.USER,
+	tool => {
+		function fillChunk(chunkX, chunkY) {
+			for(let i = 0; i<stickyel.length; i++){
+				if(stickyel[i].type == "chunk"){
+					if(stickyel[i].extra.x == chunkX && stickyel[i].extra.y == chunkY) return;
+				}
+			}
+			console.log("proceeding");
+			//let div = document.createElement("div");
+			//div.appendChild(unl);
+			let newimg = unl.cloneNode(true);			
+			newimg.style.position = "fixed";
+			newimg.style.pointerEvents = "none";
+
+//x, y, zoom, el, sh, ismag, type, {extra}
+			stickyel.push({
+				x: chunkX*16 +7,
+				y: chunkY*16 +7,
+				el: newimg,
+				z: 1/16,
+				sh: false,
+				ismag: false,
+				type: "chunk",
+				extra: {x: chunkX, y: chunkY}
+			});
+			OWOP.util.stickymov();
+		}
+
+		tool.setEvent('mousedown mousemove', (mouse, event) => {
+			if (mouse.buttons & 0b1) {
+				fillChunk(Math.floor(OWOP.mouse.tileX / 16), Math.floor(OWOP.mouse.tileY / 16));
+				return 1;
+			} else if (mouse.buttons & 0b10) {
+				fillChunk(Math.floor(OWOP.mouse.tileX / 16), Math.floor(OWOP.mouse.tileY / 16));
+				return 1;
+			}
+		});
+	}
+));
 
 
 }, 1000)
